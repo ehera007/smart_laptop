@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //servlet 만들기(서블릿 상속받아서 메인컨트롤러가 서블릿이 됨)
 public class MainController extends HttpServlet 
@@ -23,6 +24,14 @@ public class MainController extends HttpServlet
 			RequestDispatcher dispatcher = 
 					request.getRequestDispatcher("main/home.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/login.sm")) {
+			LoginPage action = new LoginPage();
+			action.login(request);
+			response.sendRedirect("main.sm");
+		}else if(command.equals("/logout.sm")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("main.sm");
 		}
 	}
 	@Override //겟방식을 받는

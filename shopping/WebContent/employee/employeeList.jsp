@@ -23,7 +23,7 @@
 </table>
 </c:if>
 <c:if test="${empty empList }">
-등록된 직원 없습니.
+등록된 직원 없습니다.
 </c:if>
 <a href="empRegest.em">직원등록</a>
 </body>
