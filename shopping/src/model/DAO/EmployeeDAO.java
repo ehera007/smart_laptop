@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.DTO.EmployeeDTO;
+import model.DTO.MemberDTO;
 
 public class EmployeeDAO {
 	final String COLUMNS = "EMPLOYEE_ID,EMP_USERID, EMP_PW, "
@@ -33,6 +34,32 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 	}
+	public EmployeeDTO empDetail(String empUserid) {
+		EmployeeDTO dto = new EmployeeDTO();
+		sql = "select " +COLUMNS+ " from employees where emp_userid = ?";
+		getConnect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, empUserid);//물음표 위치
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					dto.setEmail(rs.getString("EMAIL"));
+					dto.setEmpAddress(rs.getString("EMP_ADDRESS"));
+					dto.setEmployeeId(rs.getString("EMPLOYEE_ID"));
+					dto.setEmpName(rs.getString("EMP_NAME"));
+					dto.setEmpUserid(rs.getString("EMP_USERID"));
+					dto.setHireDate(rs.getString("HIRE_DATE"));
+					dto.setJobId(rs.getString("JOB_ID"));
+					dto.setOfficeNumber(rs.getString("OFFICE_NUMBER"));
+					dto.setPhNumber(rs.getString("PH_NUMBER"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			return dto;
+	}
 	public void empDelete(String empId) {
 		sql = " delete from employees "
 			+ " where employee_id = ?";
@@ -47,7 +74,6 @@ public class EmployeeDAO {
 		}finally {
 			close();
 		}
-		
 	}
 	public void empUpdate(EmployeeDTO dto) {
 		sql = " update employees "

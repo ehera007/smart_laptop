@@ -66,6 +66,53 @@ public class MemberController extends HttpServlet
 		}else if(command.equals("/myPage.mem")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("member/memMyPage.jsp");
 			dispatcher.forward(request, response);
+		}else if(command.equals("/memDetail.mem")){
+			//session 페이지가 닫힐 때까지 언제 어디서든 사용 가능 (굳이 값을 날리지 않아도 됨) / request는 쿼리스트링으로 날려줘야지만 계속 사용 가능
+			MemberDetailPage action = new MemberDetailPage();
+			action.memberDetail(request); //request를 전달해줘야 session 만들어서 사용 가능(만들어주기 위해서)
+			RequestDispatcher dispatcher = request.getRequestDispatcher("member/memDetail.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/memSujung.mem")) {
+			MemberDetailPage action = new MemberDetailPage();
+			action.memberDetail(request);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("member/memSujung.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("/memSujungOk.mem")) {
+			memberUpdatePage action = new memberUpdatePage();
+			int i = action.memberUpdate(request);
+			if(i == 1) {
+				response.sendRedirect("memDetail.mem");
+			}else {
+				response.sendRedirect("memSujung.mem");
+			}
+		}else if(command.equals("/memOut.mem")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("member/outPw.jsp"); //탈퇴 전 비밀번호 확인 후 진행하기 위해
+			dispatcher.forward(request, response);	
+		}else if(command.equals("/memOutOk.mem")) {
+			MemberOutPage action = new MemberOutPage();
+			int i = action.memOut(request);
+			if(i==1) {
+				response.sendRedirect("main.sm");
+			}else {
+				response.sendRedirect("memOut.mem");
+			}
+		}else if(command.equals("/memPwChange.mem")){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("member/pwChange.jsp"); 
+			dispatcher.forward(request, response);
+		}else if(command.equals("/pwChageOk.mem")) {
+			MemberPwConfirmPage action = new MemberPwConfirmPage();
+			String path = action.pwConfirm(request);		
+			RequestDispatcher dispatcher = request.getRequestDispatcher(path); 
+				dispatcher.forward(request, response);
+		}else if(command.equals("/ChangePw.mem")) {
+			MemberPwChagePage action = new MemberPwChagePage();
+			int i = action.pwChange(request);
+			if(i==1) {
+				response.sendRedirect("main.sm");
+			}else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("member/pwChange.jsp"); 
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 	@Override

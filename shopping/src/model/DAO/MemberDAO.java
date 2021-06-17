@@ -36,7 +36,6 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
-	
 	private void close() {
 		if(rs != null)	try {rs.close();} 
 						catch (SQLException e) {}
@@ -44,6 +43,22 @@ public class MemberDAO {
 						catch (SQLException e) {}
 		if(conn != null)	try {conn.close();} 
 						catch (SQLException e) {}
+	}
+	
+	public void pwChange(String memId, String memPw) {
+		sql = " update member set mem_pw = ? where mem_id = ? ";
+		getConnect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memPw);
+			pstmt.setString(2, memId);
+			int i = pstmt.executeUpdate();
+			System.out.println(i+"개가 수정되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
 	}
 	
 	public void memDel(String memId) {

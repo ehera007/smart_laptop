@@ -1,0 +1,81 @@
+package model.DTO;
+
+public class ProductDTO {
+	String prodNum;
+	String prodName;
+	Integer prodPrice;
+	String prodImage;
+	String prodDetail;
+	String prodCapasity;
+	String prodSupplyer;
+	String prodDelFee;
+	String recommend;
+	String employeeId;
+	String ctgr;
+	public String getCtgr() {
+		return ctgr;
+	}
+	public void setCtgr(String ctgr) {
+		this.ctgr = ctgr;
+	}
+	public String getProdNum() {
+		return prodNum;
+	}
+	public void setProdNum(String prodNum) {
+		this.prodNum = prodNum;
+	}
+	public String getProdName() {
+		return prodName;
+	}
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+	public Integer getProdPrice() {
+		return prodPrice;
+	}
+	public void setProdPrice(Integer prodPrice) {
+		this.prodPrice = prodPrice;
+	}
+	public String getProdImage() {
+		return prodImage;
+	}
+	public void setProdImage(String prodImage) {
+		this.prodImage = prodImage;
+	}
+	public String getProdDetail() {
+		return prodDetail;
+	}
+	public void setProdDetail(String prodDetail) {
+		this.prodDetail = prodDetail;
+	}
+	public String getProdCapasity() {
+		return prodCapasity;
+	}
+	public void setProdCapasity(String prodCapasity) {
+		this.prodCapasity = prodCapasity;
+	}
+	public String getProdSupplyer() {
+		return prodSupplyer;
+	}
+	public void setProdSupplyer(String prodSupplyer) {
+		this.prodSupplyer = prodSupplyer;
+	}
+	public String getProdDelFee() {
+		return prodDelFee;
+	}
+	public void setProdDelFee(String prodDelFee) {
+		this.prodDelFee = prodDelFee;
+	}
+	public String getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(String recommend) {
+		this.recommend = recommend;
+	}
+	public String getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+}
