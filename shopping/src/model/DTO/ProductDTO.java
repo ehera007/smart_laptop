@@ -6,7 +6,7 @@ public class ProductDTO {
 	Integer prodPrice;
 	String prodImage;
 	String prodDetail;
-	String prodCapasity;
+	String prodCapacity;
 	String prodSupplyer;
 	String prodDelFee;
 	String recommend;
@@ -48,11 +48,11 @@ public class ProductDTO {
 	public void setProdDetail(String prodDetail) {
 		this.prodDetail = prodDetail;
 	}
-	public String getProdCapasity() {
-		return prodCapasity;
+	public String getProdCapacity() {
+		return prodCapacity;
 	}
-	public void setProdCapasity(String prodCapasity) {
-		this.prodCapasity = prodCapasity;
+	public void setProdCapacity(String prodCapacity) {
+		this.prodCapacity = prodCapacity;
 	}
 	public String getProdSupplyer() {
 		return prodSupplyer;

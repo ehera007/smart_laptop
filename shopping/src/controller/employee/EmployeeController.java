@@ -58,7 +58,7 @@ public class EmployeeController extends HttpServlet
 			EmployeeDeletePage action = new EmployeeDeletePage();
 			action.empDelete(request);
 			response.sendRedirect("empList.em");
-		}else if(command.equals("/empmyPage.em")) {
+		}else if(command.equals("/empMyPage.em")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("employee/employeeMyPage.jsp");
 			dispatcher.forward(request, response);
 		}else if(command.equals("/empDetail.em")) {
