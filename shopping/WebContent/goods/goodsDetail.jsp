@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	pageContext.setAttribute("br", "\n"); // \n을 br로
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>goodsDetail.jsp</title>
 <script>
 	function onQty(){
 		var qty = document.frm.PurchaseQty.value;
@@ -46,5 +50,19 @@
 		</c:forTokens></td></tr>
 </table>
 </form>
+리뷰
+<hr/>
+<c:forEach items="${list }" var="dto">
+	<p>
+	<c:if test="${dto.memId == null }">일반사용자</c:if>
+	<c:if test="${dto.memId != null }">${dto.memId }</c:if>
+	${dto.memId} / ${dto.reviewDate }<br/>
+	${fn:replace(dto.reviewContent, br, "<br/>")} <br/>
+	<c:if test="${dto.reviewImg != null }">
+		<img src="goods/review/${dto.reviewImg }" />
+	</c:if>
+	<hr/>
+	</p>
+</c:forEach>
 </body>
 </html>

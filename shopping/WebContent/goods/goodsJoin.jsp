@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>goodsJoin.jsp</title>
 </head>
 <body><!-- 파일 전송은 무조건 post 여야함 -->
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>goodsModify.jsp</title>
 </head>
 <body>
 <form action="goodsModify.gd" method="post" name="frm" >
